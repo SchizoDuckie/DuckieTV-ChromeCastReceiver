@@ -48,6 +48,7 @@ body {
     background-repeat:no-repeat;
     font-family: helvetica, sans-serif;
     color: #444;
+    overflow:hidden;
 }
 body > .container {
     padding:20px;

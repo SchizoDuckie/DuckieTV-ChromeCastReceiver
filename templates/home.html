@@ -1,5 +1,39 @@
 <fieldset style='border:0px'>
+    <div ng-if="!serie " style='margin: 0 auto; margin-top: 250px; text-align:center;'>
     <h2>DUCKIE TV</h2>
 
-    <img class='image' src='img/duckietv.png'>
+    <img class='image' src='img/icon128.png'>
+    </div>
+
+    <div ng-if="serie" style='float: left; width:60%;'>
+
+      <h2>{{ serie.name }}</h2>
+     </div>
+
+	  <div ng-if="episode" style='float:left; width:60%; text-align: center;'>
+	     	<table class="table table-condensed light" style='margin-top: 20px; border: 1px solid #efefef; border-collapse:collapse;'>
+	      	<tr><th colspan='2'><h2>{{ getEpisodeNumber(episode)}} - {{ episode.episodename }}</h2>
+			</th></tr>
+	         <tr>
+	          <td colspan="2">
+	            <div style='float:left; width: 300px; height:150px; background-size:contain; background-repeat:no-repeat; margin: 10px; ' lazy-background="{{episode.filename}}"></div>
+	            {{episode.overview}}
+
+	          </td>
+	        </tr>
+	        <tr>
+	          <th>First aired</th>
+	          <td>{{ getAirDate(episode) | date:'dd-MM-yyyy HH:mm:ss'}}</td>
+	        </tr>
+	        <tr>
+	          <th>Rating</th>
+	          <td>{{episode.rating}} ({{episode.ratingcount}} ratings)</td>
+	        </tr>
+	    </table>
+
+     </div>
+     <div ng-if="serie" style='position:absolute; left:70%; top:0px;'>
+     	<serie-details></serie-details>
+     </div>
+
 </fieldset>

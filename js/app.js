@@ -7,6 +7,7 @@ angular.module('DuckieTV', [
     'ngRoute',
     'DuckieTV.controllers.chromecastreceiver',
     'DuckieTV.directives.backgroundrotator',
+    'DuckieTV.directives.seriedetails',
     'DuckieTV.directives.lazybackground'
 ])
 

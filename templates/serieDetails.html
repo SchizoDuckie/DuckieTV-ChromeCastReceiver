@@ -1,0 +1,46 @@
+<div class="table table-condensed light" style='margin-bottom:0; margin-top:20px; position:relative;'>
+
+  <div ng-if="!seasons">
+    <div lazy-background="{{serie.poster}}" style='margin: 0px auto; width:300px; height:400px; background-size:contain; background-repeat:no-repeat;'></div>
+  </div>
+  <table class="table table-condensed light">
+    <tbody>
+      <tr>
+        <th>Airs on</th>
+        <td>{{serie.airs_dayofweek}} {{serie.airs_time}}</td>
+      </tr>
+      <tr>
+        <th>First Aired</th>
+        <td ng-if="serie">{{ getAirDate(serie).toLocaleString() }}</td>
+      </tr>
+      <tr>
+        <th>Genre</th>
+        <td>
+          <ul class="list-unstyled">
+            <li ng-repeat="genre in serie.genre.split('|') track by $index">{{genre}}</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <th>Country</th>
+        <td>{{serie.language}}</td>
+      </tr>
+      <tr>
+        <th>Network</th>
+        <td>{{serie.network}}</td>
+      </tr>
+      <tr>
+        <th>Rating</th>
+        <td>{{serie.rating}} ({{serie.ratingcount}} ratings)</td>
+      </tr>
+      <tr>
+        <th>Runtime</th>
+        <td>{{serie.runtime}}</td>
+      </tr>
+      <tr>
+        <th>Status</th>
+        <td>{{serie.status}}</td>
+      </tr>
+     
+    </tbody>
+  </table>
