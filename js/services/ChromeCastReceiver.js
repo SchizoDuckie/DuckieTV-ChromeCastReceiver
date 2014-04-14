@@ -7,6 +7,7 @@ angular.module('DuckieTV.providers.chromecast', [])
     var namespace = 'urn:x-cast:io.github.schizoduckie.duckietv';
     var session = null;
     var messageBus = null;
+    var remoteMedia = null;
 
     var handlers = {
         onReady: function(event) {
@@ -44,6 +45,9 @@ angular.module('DuckieTV.providers.chromecast', [])
             session.onSystemVolumeChanged = handlers.onSystemVolumeChanged;
             session.onSenderConnected = handlers.onSenderConnected;
             session.onReady = handlers.onReady;
+
+            remoteMedia = new cast.receiver.MediaManager(document.getElementById('vid'));
+
             messageBus = session.getCastMessageBus('urn:x-cast:io.github.schizoduckie.duckietv');
             messageBus.onMessage = handlers.onMessage;
             session.start({
@@ -57,7 +61,7 @@ angular.module('DuckieTV.providers.chromecast', [])
         handleMessage: function(data) {
 
             console.log("Message received!", data);
-            var inputFilter = ['background:load', 'serie:load', 'episode:load'];
+            var inputFilter = ['background:load', 'serie:load', 'episode:load', 'video:load'];
             inputFilter.map(function(el) {
                 if (el in data) {
                     console.log("Found message to broadcast! ", el, data[el]);

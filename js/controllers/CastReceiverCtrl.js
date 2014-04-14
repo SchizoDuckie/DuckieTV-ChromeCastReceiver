@@ -24,6 +24,13 @@ angular.module('DuckieTV.controllers.chromecastreceiver', ['DuckieTV.providers.c
         $scope.$digest();
     })
 
+    $rootScope.$on('video:load', function(evt, src) {
+        console.log('received video:load event!');
+        $scope.showVideo = true;
+        playVideo(src);
+
+        $scope.$digest();
+    });
 
     $scope.getAirDate = function(episode) {
         return new Date(episode.firstaired);
@@ -37,3 +44,10 @@ angular.module('DuckieTV.controllers.chromecastreceiver', ['DuckieTV.providers.c
 
 
 });
+
+playVideo = function(src) {
+    var elem = document.getElementById('vid');
+    elem.setAttribute('src', src);
+    elem.play();
+    console.debug('playing!');
+}
