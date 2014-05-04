@@ -14,6 +14,7 @@ angular.module('DuckieTV.controllers.chromecastreceiver', ['DuckieTV.providers.c
     $rootScope.$on('serie:load', function(evt, data) {
         console.log("Received serie:load broadcast message!", data);
         $scope.serie = data;
+        $scope.episode = false;
         $scope.$digest();
     });
 

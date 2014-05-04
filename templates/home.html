@@ -8,17 +8,17 @@
     <div ng-if="serie" style='float: left; width:60%;'>
 
       <h2>{{ serie.name }}</h2>
+      <p class='overview'>{{ serie.overview }}</p>
      </div>
 
-	  <div ng-if="episode" style='float:left; width:60%; text-align: center;'>
+	  <div ng-if="episode" style=' text-align: center;'>
 	     	<table class="table table-condensed light" style='margin-top: 20px; border: 1px solid #efefef; border-collapse:collapse;'>
-	      	<tr><th colspan='2'><h2>{{ getEpisodeNumber(episode)}} - {{ episode.episodename }}</h2>
+	      	<tr><th colspan='2'><h2 style='white-space:nowrap'>{{ getEpisodeNumber(episode)}} - {{ episode.episodename }}</h2>
 			</th></tr>
 	         <tr>
 	          <td colspan="2">
 	            <div style='float:left; width: 300px; height:150px; background-size:contain; background-repeat:no-repeat; margin: 10px; ' lazy-background="{{episode.filename}}"></div>
 	            {{episode.overview}}
-
 	          </td>
 	        </tr>
 	        <tr>
